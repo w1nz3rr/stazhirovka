@@ -4,6 +4,10 @@ import string
 def valid_name(data_name):
     if not type(data_name) is str:
         raise ValueError('Название должно быть строкой')
+    special_symbol = string.punctuation
+    for char in data_name:
+        if char in special_symbol:
+            raise ValueError('Название не должно содержать спецсимволов')
 
 def valid_calories(data_calories):
     if type(data_calories) is str:

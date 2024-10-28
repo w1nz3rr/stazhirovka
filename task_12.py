@@ -1,10 +1,17 @@
+import string
 from task_11 import Dessert, valid_name, valid_calories
+
+
 
 list_flavor = ['nuts', 'black licorice', 'raspberry', 'chocolate', 'caramel', 'coconut', 'coffee', 'orange']
 
 def valid_flavor(data_flavor):
     if not type(data_flavor) is str:
         raise TypeError("Некоретный ввод вкуса")
+    special_symbol = string.punctuation
+    for char in data_flavor:
+        if char in special_symbol:
+            raise ValueError('Вкус не должен содержать спецсимволов')
     if data_flavor not in list_flavor:
         raise  ValueError("Такого вкуса дисерта не существует")
 
