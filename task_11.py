@@ -53,19 +53,19 @@ class Dessert:
         return True
 
 #тесты
-# test1 = Dessert()
-# print(test1.get_name, test1.get_calories)
-# print(test1.is_healthy())
-# print(test1.is_delicious())
-# test1.get_name = 'Бисквит'
-# test1.get_calories = 300
-# print(test1.get_name, test1.get_calories)
-# print(test1.is_healthy())
-# print(test1.is_delicious())
-# test2 = Dessert('Конфета', '123')
-# print(test2.get_name, test2.get_calories)
-# print(test2.is_healthy())
-# print(test2.is_delicious())
+test1 = Dessert()
+print(test1.get_name, test1.get_calories)
+print(test1.is_healthy())
+print(test1.is_delicious())
+test1.get_name = 'Бисквит'
+test1.get_calories = 300
+print(test1.get_name, test1.get_calories)
+print(test1.is_healthy())
+print(test1.is_delicious())
+test2 = Dessert('Конфета', '123')
+print(test2.get_name, test2.get_calories)
+print(test2.is_healthy())
+print(test2.is_delicious())
 
 
 

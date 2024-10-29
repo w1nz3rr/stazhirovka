@@ -1,11 +1,30 @@
+class WrongNumberOfPlayersError(Exception):
+    pass
+
+class NoSuchStrategyError(Exception):
+    pass
+
+def valid_count_players(list_plaers):
+    if len(list_plaers) != 2:
+        raise WrongNumberOfPlayersError("Число игроков должно быть ровно двум")
+
+def valid_for_items(list_players):
+    list_item = [ 'R', 'S', 'P' ]
+    for item_player in list_players:
+        if not item_player[ 1 ] in list_item:
+            raise NoSuchStrategyError("Нет такого варианта хода, у вас на выбор R, S, P")
+
 def rps_game_winner(list_players):
     #Валидация
-    if len(list_players) != 2:
-        raise ValueError("WrongNumberOfPlayersError")
-    list_item = ['R', 'S', 'P']
-    for item_player in list_players:
-        if not item_player[1] in list_item:
-            raise ValueError("NoSuchStrategyError")
+    try:
+        valid_count_players(list_players)
+    except WrongNumberOfPlayersError as error:
+        return error
+
+    try:
+        valid_for_items(list_players)
+    except NoSuchStrategyError as error:
+        return error
     # Код функции
     player1, player2 = list_players
     name1, item1 = player1
@@ -20,23 +39,10 @@ def rps_game_winner(list_players):
         return res.join(player2)
 
 
-#Исключения
-try:
-    print(rps_game_winner([['player1', 'P'], ['player2', 'S'], ['player3', 'S']]))
-except ValueError as error:
-    print(error)
-try:
-    print(rps_game_winner([['player1', 'P'], ['player2', 'A']]))
-except ValueError as error:
-    print(error)
 
-try:
-    print(rps_game_winner([['player1', 'P'], ['player2', 'S']]))
-except ValueError as error:
-    print(error)
+print(rps_game_winner([['player1', 'P'], ['player2', 'S'], ['player3', 'S']]))
+print(rps_game_winner([['player1', 'P'], ['player2', 'A']]))
+print(rps_game_winner([['player1', 'P'], ['player2', 'S']]))
+print(rps_game_winner([['player1', 'P'], ['player2', 'P']]))
 
-try:
-    print(rps_game_winner([['player1', 'P'], ['player2', 'P']]))
-except ValueError as error:
-    print(error)
 
