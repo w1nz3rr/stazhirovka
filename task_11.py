@@ -47,7 +47,7 @@ class Dessert:
     def is_healthy(self):
         if type(self.__calories) is str:
             return True
-        if self.__calories <= 200:
+        if self.__calories < 200:
             return True
         return False
 
@@ -70,6 +70,10 @@ print(dessert.is_delicious())
 if not dessert.is_delicious(): raise Exception("Invalid method result")
 print(dessert.is_healthy())
 dessert.calories = 300
+print(dessert.calories)
+print(dessert.is_healthy())
+if dessert.is_healthy(): raise Exception("Logical error. Method must return False")
+dessert.calories = 200
 print(dessert.calories)
 print(dessert.is_healthy())
 if dessert.is_healthy(): raise Exception("Logical error. Method must return False")
